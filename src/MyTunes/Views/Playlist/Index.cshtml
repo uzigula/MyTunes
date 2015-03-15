@@ -1,10 +1,6 @@
 ﻿@model IEnumerable<MyTunes.Models.PlayListViewModel>
 
-@{
-    ViewBag.Title = "My PlayLists";
-}
-
-<h2>Index</h2>
+<h2>@ViewBag.Titulo</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")

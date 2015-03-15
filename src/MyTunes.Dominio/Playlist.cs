@@ -16,7 +16,7 @@ namespace MyTunes.Dominio
 
         [StringLength(120)]
         public string Name { get; set; }
-
+        public int CustomerId { get; set; }
         public virtual ICollection<Track> Track { get; set; }
     }
 }

@@ -47,8 +47,8 @@ namespace IdentitySample
 
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            //    clientId: "mytunesID",  //este Id lo entrega MS 
+            //    clientSecret: "");   //clave
 
             //app.UseTwitterAuthentication(
             //   consumerKey: "",

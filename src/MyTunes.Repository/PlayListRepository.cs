@@ -14,9 +14,10 @@ namespace MyTunes.Repository
         {
             _context = new ChinookContext();
         }
-        public IEnumerable<Playlist> Get(string userName)
+        //Change Signature - Refactoring
+        public IEnumerable<Playlist> Get(int customerId)
         {
-            return _context.Playlist.AsEnumerable();
+            return _context.Playlist.Where(x => x.CustomerId == customerId).AsEnumerable();
         }
 
         public void Dispose()

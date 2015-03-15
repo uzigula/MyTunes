@@ -9,22 +9,26 @@ namespace MyTunes.Services
 {
     public class PlayListService : IDisposable
     {
-        private PlayListRepository _repository;
+        private PlayListRepository _playListRepository;
+        private CustomerRepository _customerRepository;
 
         public PlayListService()
         {
-            _repository = new PlayListRepository();
+            _playListRepository = new PlayListRepository();
+            _customerRepository = new CustomerRepository();
         }
         public IEnumerable<PlayListViewModel> GetPlayLists(string userName)
         {
-            var playLists = _repository.Get(userName);
+            var customer = _customerRepository.GetByEmail(userName);
+            if (customer == null) throw new InvalidOperationException(string.Format("Cliente no encontrado {0}", userName));
+            var playLists = _playListRepository.Get(customer.Id); // PlayList
             // aqui se tiene que hacer un mapeo del dominio al viewmodel
             return playLists.Select(playList => new PlayListViewModel(playList)).ToList();
         }
-
+         
         public void Dispose()
         {
-            _repository = null;
+            _playListRepository = null;
         }
     }
 }

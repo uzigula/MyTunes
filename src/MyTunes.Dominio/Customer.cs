@@ -55,5 +55,7 @@ namespace MyTunes.Dominio
         public virtual Employee Employee { get; set; }
 
         public virtual ICollection<Invoice> Invoice { get; set; }
+
+        public virtual ICollection<Playlist> PlayLists { get; set; }
     }
 }

@@ -9,6 +9,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using MyTunes.Models;
+using MyTunes.Services;
 
 namespace IdentitySample.Controllers
 {
@@ -19,7 +21,7 @@ namespace IdentitySample.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -153,6 +155,21 @@ namespace IdentitySample.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    // Asignar el rol Cliente al USuario
+                    result = await UserManager.AddToRolesAsync(user.Id, "Cliente");
+                    var _customerService = new CustomerService();
+                    _customerService.Create(
+                        new CustomerViewModel
+                        {
+                            Email = model.Email,
+                            FirstName = model.FirstName,
+                            LastName = model.LastName
+                        }
+                            );
+
+                    // Tratar el Error
+                    // Si hay Error hacer un rollback de la creacion del usuario
+                    //
                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
