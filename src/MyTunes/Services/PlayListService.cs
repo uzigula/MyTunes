@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MyTunes.Dominio;
 using MyTunes.Models;
 using MyTunes.Repository;
 
@@ -29,6 +30,14 @@ namespace MyTunes.Services
         public void Dispose()
         {
             _playListRepository = null;
+        }
+
+        public void Create(PlaylistEditViewModel model)
+        {
+            var customer = _customerRepository.GetByEmail(model.CustomerUserName);
+            if (customer == null) throw new InvalidOperationException(string.Format("Cliente no encontrado {0}", model.CustomerUserName));
+            var playList = new Playlist(){Name = model.Nombre,CustomerId = customer.Id};
+            _playListRepository.Create(playList);
         }
     }
 }

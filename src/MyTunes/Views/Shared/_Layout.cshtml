@@ -25,9 +25,14 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
-                    @if (Request.IsAuthenticated && User.IsInRole("Admin")) {
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {
                         <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
                         <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                    }
+                    @if (Request.IsAuthenticated && User.IsInRole("Cliente"))
+                    {
+                        <li>@Html.ActionLink("My Playlist", "Index", "PlayList")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -35,6 +40,15 @@
         </div>
     </div>
     <div class="container body-content">
+        @if (ViewData.ModelState[""] != null && ViewData.ModelState[""].Errors.Count > 0)
+        {
+            <div id="validation-message-container">
+                <div class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <b>@ViewData.ModelState[""].Errors[0].ErrorMessage</b>
+                </div>
+            </div>
+        }
         @RenderBody()
         <hr />
         <footer>

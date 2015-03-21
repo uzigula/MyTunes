@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using MyTunes.Dominio;
 
 namespace MyTunes.Repository
@@ -14,7 +13,7 @@ namespace MyTunes.Repository
         {
             _context = new ChinookContext();
         }
-        //Change Signature - Refactoring
+        
         public IEnumerable<Playlist> Get(int customerId)
         {
             return _context.Playlist.Where(x => x.CustomerId == customerId).AsEnumerable();
@@ -23,6 +22,12 @@ namespace MyTunes.Repository
         public void Dispose()
         {
             _context = null;
+        }
+
+        public void Create(Playlist playList)
+        {
+            _context.Playlist.Add(playList);
+            _context.SaveChanges();
         }
     }
 }
