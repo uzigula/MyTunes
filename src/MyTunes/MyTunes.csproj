@@ -146,8 +146,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="Scripts\app\general-module.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Views\Playlist\Index.cshtml" />
     <Content Include="Views\Playlist\Create.cshtml" />
+    <Content Include="Views\Playlist\Edit.cshtml" />
+    <Content Include="Views\Playlist\_AddTrackNew.cshtml" />
+    <Content Include="Views\Playlist\Shared\_TracklistEdit.cshtml" />
+    <Content Include="Views\Playlist\SearchTrack.cshtml" />
+    <Content Include="Views\Playlist\Shared\_Tracklist.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

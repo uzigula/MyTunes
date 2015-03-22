@@ -13,10 +13,10 @@ namespace MyTunes.Repository
         {
             _context = new ChinookContext();
         }
-        
-        public IEnumerable<Playlist> Get(int customerId)
+
+        public IQueryable<Playlist> Get()
         {
-            return _context.Playlist.Where(x => x.CustomerId == customerId).AsEnumerable();
+            return _context.Playlist.AsQueryable();
         }
 
         public void Dispose()
@@ -27,6 +27,11 @@ namespace MyTunes.Repository
         public void Create(Playlist playList)
         {
             _context.Playlist.Add(playList);
+            _context.SaveChanges();
+        }
+
+        public void Update(Playlist playList)
+        {
             _context.SaveChanges();
         }
     }

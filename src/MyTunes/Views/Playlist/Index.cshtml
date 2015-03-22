@@ -3,7 +3,7 @@
 <h2>@ViewBag.Titulo</h2>
 
 <p>
-    @Html.ActionLink("New", "Create")
+    @Html.ActionLink("Nuevo", "Create")
 </p>
 <table class="table">
     <tr>
@@ -25,9 +25,22 @@
             @Html.DisplayFor(modelItem => item.Calificacion)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            <div class="btn-group">
+                <button title="Acción" class="btn dropdown-toggle btn-xs" data-toggle="dropdown">
+                    <span><i class="glyphicon glyphicon-cog"></i><span class="caret"></span> </span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href=@Url.Action("Edit", "Playlist", new { id = item.Id })><i class="glyphicon glyphicon-edit"></i>&nbsp;Editar</a>
+                    </li>
+                    <li>
+                        <a href=@Url.Action("Detail", "Playlist", new { id = item.Id })><i class="glyphicon glyphicon-pencil"></i>&nbsp;Ver</a>
+                    </li>
+                    <li>
+                        <a href=@Url.Action("Delete", "Playlist", new { id = item.Id })><i class="glyphicon glyphicon-eye-open"></i>&nbsp;Eliminar</a>
+                    </li>
+                </ul>
+            </div>
         </td>
     </tr>
 }
