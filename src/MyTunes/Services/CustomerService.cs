@@ -1,20 +1,19 @@
 ﻿using MyTunes.Dominio;
+using MyTunes.Models;
 using MyTunes.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace MyTunes.Services
 {
     public class CustomerService
     {
         private CustomerRepository _customerRepository;
+        private ChinookContext _context;
         public CustomerService()
         {
-            _customerRepository = new CustomerRepository();
+            _context = new ChinookContext();
+            _customerRepository = new CustomerRepository(_context);
         }
-        public void Create(Models.CustomerViewModel customerViewModel)
+        public void Create(CustomerViewModel customerViewModel)
         {
             // customerViewModel -> Customer
             var customer = new Customer

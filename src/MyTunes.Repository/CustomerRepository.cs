@@ -1,17 +1,16 @@
-﻿using MyTunes.Dominio;
-using System;
-using System.Collections.Generic;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
+using MyTunes.Dominio;
 
 namespace MyTunes.Repository
 {
-    public class CustomerRepository : IDisposable
+    public class CustomerRepository : IRepository<Customer>
     {
         private ChinookContext _context;
-        public CustomerRepository()
+        public CustomerRepository(DbContext context)
         {
-            _context = new ChinookContext();
+            _context = (ChinookContext)(context);
         }
         public Customer GetByEmail(string userName)
         {
@@ -23,10 +22,20 @@ namespace MyTunes.Repository
             _context = null;
         }
 
-        public int Create(Customer customer)
+        public IQueryable<Customer> Get()
         {
-            _context.Customer.Add(customer);
-           return  _context.SaveChanges();
+            return _context.Customer.AsQueryable();
+        }
+
+        public void Create(Customer playList)
+        {
+            _context.Customer.Add(playList);
+            _context.SaveChanges();
+        }
+
+        public void Update(Customer playList)
+        {
+            _context.SaveChanges();
         }
     }
 }

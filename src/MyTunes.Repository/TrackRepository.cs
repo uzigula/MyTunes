@@ -1,18 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
 using MyTunes.Dominio;
 
 namespace MyTunes.Repository
 {
-    public class TrackRepository
+    public class TrackRepository : IRepository<Track>
     {
         private ChinookContext _context;
 
-        public TrackRepository()
+        public TrackRepository(DbContext context)
         {
-            _context = new ChinookContext();
+            _context = (ChinookContext)(context);
         }
 
         public IQueryable<Track> Get()
@@ -23,6 +22,18 @@ namespace MyTunes.Repository
         public void Dispose()
         {
             _context = null;
+        }
+
+
+        public void Create(Track playList)
+        {
+            _context.Track.Add(playList);
+            _context.SaveChanges();
+        }
+
+        public void Update(Track playList)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Data.Entity;
 using System.Linq;
 using MyTunes.Dominio;
 
 namespace MyTunes.Repository
 {
-    public class PlayListRepository : IDisposable
+    public class PlayListRepository : IRepository<Playlist>
     {
         private ChinookContext _context;
 
-        public PlayListRepository()
+        public PlayListRepository(DbContext context)
         {
-            _context = new ChinookContext();
+            _context = (ChinookContext)(context);
         }
 
         public IQueryable<Playlist> Get()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Cache;
 using System.Text;
+using System.Web.WebSockets;
 using MyTunes.Dominio;
 using MyTunes.Models;
 using MyTunes.Repository;
@@ -14,16 +15,18 @@ namespace MyTunes.Services
         private PlayListRepository _playListRepository;
         private CustomerRepository _customerRepository;
         private TrackRepository _trackRepository;
+        private ChinookContext _context;
 
         public PlayListService()
         {
-            _playListRepository = new PlayListRepository();
-            _customerRepository = new CustomerRepository();
-            _trackRepository = new TrackRepository();
+            _context = new ChinookContext();
+            _playListRepository = new PlayListRepository(_context);
+            _customerRepository = new CustomerRepository(_context);
+            _trackRepository = new TrackRepository(_context);
         }
         public IEnumerable<PlayListViewModel> GetPlayLists(string userName)
         {
-            var customer = _customerRepository.GetByEmail(userName);
+            var customer = _customerRepository.Get().FirstOrDefault(c=>c.Email==userName);
             if (customer == null) throw new InvalidOperationException(string.Format("Cliente no encontrado {0}", userName));
             var playLists = _playListRepository.Get().Where(x=>x.CustomerId==customer.Id).ToList(); // PlayList
             // aqui se tiene que hacer un mapeo del dominio al viewmodel
@@ -37,7 +40,7 @@ namespace MyTunes.Services
 
         public void Create(PlaylistCreateViewModel model)
         {
-            var customer = _customerRepository.GetByEmail(model.CustomerUserName);
+            var customer = _customerRepository.Get().FirstOrDefault(c => c.Email == model.CustomerUserName);
             if (customer == null) throw new InvalidOperationException(string.Format("Cliente no encontrado {0}", model.CustomerUserName));
             var playList = new Playlist(){Name = model.Nombre,CustomerId = customer.Id};
             _playListRepository.Create(playList);
