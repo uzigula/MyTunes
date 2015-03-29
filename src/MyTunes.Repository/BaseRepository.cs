@@ -4,14 +4,15 @@ using MyTunes.Dominio;
 
 namespace MyTunes.Repository
 {
-    public class BaseRepository<TEntity> : IRepository<TEntity>
+    public class BaseRepository<TEntity,TContext> : IRepository<TEntity>
         where TEntity:EntityBase
+        where TContext : DbContext
     {
-        protected ChinookContext _context;
+        protected TContext _context;
 
-        public BaseRepository(DbContext context)
+        public BaseRepository(TContext context)
         {
-            _context = (ChinookContext) context;
+            _context = context;
         }
         public void Dispose()
         {

@@ -5,9 +5,10 @@ using MyTunes.Dominio;
 
 namespace MyTunes.Repository
 {
-    public class CustomerRepository : BaseRepository<Customer>
+    public class CustomerRepository : BaseRepository<Customer, ChinookContext>
     {
-        public CustomerRepository(DbContext context):base(context)
+        public CustomerRepository(ChinookContext context)
+            : base(context)
         {
         }
     }

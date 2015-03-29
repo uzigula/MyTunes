@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Cache;
-using System.Text;
-using System.Web.WebSockets;
 using MyTunes.Dominio;
 using MyTunes.Models;
 using MyTunes.Repository;
@@ -12,9 +9,9 @@ namespace MyTunes.Services
 {
     public class PlayListService : IDisposable
     {
-        private PlayListRepository _playListRepository;
-        private CustomerRepository _customerRepository;
-        private TrackRepository _trackRepository;
+        private IRepository<Playlist> _playListRepository;
+        private IRepository<Customer> _customerRepository;
+        private IRepository<Track> _trackRepository;
         private ChinookContext _context;
 
         public PlayListService()
@@ -22,7 +19,14 @@ namespace MyTunes.Services
             _context = new ChinookContext();
             _playListRepository = new PlayListRepository(_context);
             _customerRepository = new CustomerRepository(_context);
-            _trackRepository = new TrackRepository(_context);
+            _trackRepository    = new TrackRepository(_context);
+        }
+
+        public PlayListService(IRepository<Playlist> playListRepositoryStub, IRepository<Customer> customerRepositoryStub, IRepository<Track> tracRepositoryStub)
+        {
+            _playListRepository = playListRepositoryStub;
+            _customerRepository = customerRepositoryStub;
+            _trackRepository = tracRepositoryStub;
         }
         public IEnumerable<PlayListViewModel> GetPlayLists(string userName)
         {

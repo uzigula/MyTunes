@@ -5,11 +5,11 @@ using MyTunes.Dominio;
 
 namespace MyTunes.Repository
 {
-    public class TrackRepository : BaseRepository<Track>
+    public class TrackRepository : BaseRepository<Track, ChinookContext>
     {
-        private ChinookContext _context;
 
-        public TrackRepository(DbContext context):base(context)
+        public TrackRepository(ChinookContext context)
+            : base(context)
         {
         }
 
