@@ -1,14 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using MyTunes.Dominio;
 using MyTunes.Repository;
 using MyTunes.Services;
-using Ninject;
 using NUnit.Framework;
-using Ninject.Extensions.Conventions;
 using Rhino.Mocks;
-using System.Collections.Generic;
 
 namespace MyTunes.Tests.Services
 {

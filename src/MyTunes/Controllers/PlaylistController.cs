@@ -14,9 +14,9 @@ namespace MyTunes.Controllers
     {
         private PlayListService _playListService;
 
-        public PlaylistController()
+        public PlaylistController(PlayListService service)
         {
-            _playListService = new PlayListService();
+            _playListService = service;
         }
 
         // GET: Playlist

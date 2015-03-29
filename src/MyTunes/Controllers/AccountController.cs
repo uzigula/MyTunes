@@ -17,14 +17,13 @@ namespace IdentitySample.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        public AccountController()
-        {
-        }
-
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        private CustomerService _customerService;
+   
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, CustomerService customerService)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            this._customerService = customerService;
         }
 
         private ApplicationUserManager _userManager;
@@ -157,7 +156,6 @@ namespace IdentitySample.Controllers
                 {
                     // Asignar el rol Cliente al USuario
                     result = await UserManager.AddToRolesAsync(user.Id, "Cliente");
-                    var _customerService = new CustomerService();
                     _customerService.Create(
                         new CustomerViewModel
                         {

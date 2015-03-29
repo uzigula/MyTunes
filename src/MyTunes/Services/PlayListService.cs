@@ -12,15 +12,6 @@ namespace MyTunes.Services
         private IRepository<Playlist> _playListRepository;
         private IRepository<Customer> _customerRepository;
         private IRepository<Track> _trackRepository;
-        private ChinookContext _context;
-
-        public PlayListService()
-        {
-            _context = new ChinookContext();
-            _playListRepository = new PlayListRepository(_context);
-            _customerRepository = new CustomerRepository(_context);
-            _trackRepository    = new TrackRepository(_context);
-        }
 
         public PlayListService(IRepository<Playlist> playListRepositoryStub, IRepository<Customer> customerRepositoryStub, IRepository<Track> tracRepositoryStub)
         {

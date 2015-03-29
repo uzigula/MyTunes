@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Web;
+using MyTunes.Identity;
+using System.Net.Mail;
 
 namespace IdentitySample.Models
 {
@@ -20,6 +22,10 @@ namespace IdentitySample.Models
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
             : base(store)
         {
+            var provider = new MachineKeyProtectionProvider();
+            this.UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(
+                provider.Create("ASP.NET Identity"));
+
         }
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options,
@@ -58,12 +64,16 @@ namespace IdentitySample.Models
             });
             manager.EmailService = new EmailService();
             manager.SmsService = new SmsService();
-            var dataProtectionProvider = options.DataProtectionProvider;
-            if (dataProtectionProvider != null)
-            {
-                manager.UserTokenProvider =
-                    new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
-            }
+            // para poder injectar UserManager en Ninject reemplazamos la implementacion de MachineKeyProvider
+            var provider = new MachineKeyProtectionProvider();
+            manager.UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(
+                provider.Create("ASP.NET Identity"));
+            //var dataProtectionProvider = options.DataProtectionProvider;
+            //if (dataProtectionProvider != null)
+            //{
+            //    manager.UserTokenProvider =
+            //        new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
+            //}
             return manager;
         }
     }
@@ -84,9 +94,23 @@ namespace IdentitySample.Models
 
     public class EmailService : IIdentityMessageService
     {
+
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
+            //var mail = new MailMessage("source@account.com", new MailAddress(message.Destination,message.Destination))
+            //{
+            //    Subject = message.Subject, 
+            //    Body = message.Body,
+            //    IsBodyHtml = true
+            //};
+            //var client = new SmtpClient("server", "port")
+            //{
+            //    Credentials = new NetworkCredential("UserName", "Password"),
+            //    EnableSsl = true
+            //};
+
+
+            //return client.SendAsync(mail);
             return Task.FromResult(0);
         }
     }

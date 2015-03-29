@@ -6,12 +6,11 @@ namespace MyTunes.Services
 {
     public class CustomerService
     {
-        private CustomerRepository _customerRepository;
-        private ChinookContext _context;
-        public CustomerService()
+        private IRepository<Customer>_customerRepository;
+
+        public CustomerService(IRepository<Customer> customerRepository )
         {
-            _context = new ChinookContext();
-            _customerRepository = new CustomerRepository(_context);
+            _customerRepository = customerRepository;
         }
         public void Create(CustomerViewModel customerViewModel)
         {
