@@ -25,13 +25,13 @@ namespace MyTunes.Repository
         }
 
 
-        public void Create(Track playList)
+        public void Create(Track entity)
         {
-            _context.Track.Add(playList);
+            _context.Track.Add(entity);
             _context.SaveChanges();
         }
 
-        public void Update(Track playList)
+        public void Update(Track entity)
         {
             throw new NotImplementedException();
         }

@@ -27,13 +27,13 @@ namespace MyTunes.Repository
             return _context.Customer.AsQueryable();
         }
 
-        public void Create(Customer playList)
+        public void Create(Customer entity)
         {
-            _context.Customer.Add(playList);
+            _context.Customer.Add(entity);
             _context.SaveChanges();
         }
 
-        public void Update(Customer playList)
+        public void Update(Customer entity)
         {
             _context.SaveChanges();
         }

@@ -8,7 +8,7 @@ namespace MyTunes.Repository
         where TEntity:EntityBase
     {
         IQueryable<TEntity> Get();
-        void Create(TEntity playList);
-        void Update(TEntity playList);
+        void Create(TEntity entity);
+        void Update(TEntity entity);
     }
 }
