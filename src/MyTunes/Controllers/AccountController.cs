@@ -9,8 +9,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using MyTunes.Models;
-using MyTunes.Services;
+using MyTunes.Common.ViewModels;
+using MyTunes.Services.Entities;
 
 namespace IdentitySample.Controllers
 {

@@ -1,11 +1,11 @@
 ﻿using System.Web.Mvc;
-using MyTunes.Services;
 using System.Collections.Generic;
-using MyTunes.Models;
 using System;
 using System.Net;
 using System.Net.Http;
 using System.Web;
+using MyTunes.Services.Entities;
+using MyTunes.Common.ViewModels;
 
 namespace MyTunes.Controllers
 {

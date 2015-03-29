@@ -4,7 +4,7 @@ using System.Linq;
 using FluentAssertions;
 using MyTunes.Dominio;
 using MyTunes.Repository;
-using MyTunes.Services;
+using MyTunes.Services.Entities;
 using NUnit.Framework;
 using Rhino.Mocks;
 

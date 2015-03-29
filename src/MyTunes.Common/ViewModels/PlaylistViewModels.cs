@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using MyTunes.Dominio;
 
-namespace MyTunes.Models
+namespace MyTunes.Common.ViewModels
 {
     public class PlayListViewModel
     {
