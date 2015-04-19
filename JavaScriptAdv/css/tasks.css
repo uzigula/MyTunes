@@ -1,0 +1,56 @@
+body {
+    font-family: "Helvetica";
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    padding: 1em;
+    background-color: #bcd;
+}
+
+.toolbar {
+    background-color: #ccc;
+    border-color: #444;
+    border-width: 1px 0;
+    border-style: solid;
+    padding: .2em 1em;
+}
+
+button {
+    padding: .5em;
+    width: 8em;
+    border: 1px solid;
+    background-color: #eee;
+}
+
+#save-button {
+    background-color: #7f7;
+}
+
+#task-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#log-list {
+    font-size: .8em;
+    color: #777;
+}
+
+.task {
+    padding: .4em 1em;
+    border-top: 1px dashed #444;
+}
+
+.task:first-child {
+    border: none;
+}
+
+.task .description {
+    width: 40%;
+    padding: .5em;
+    border: 1px solid;
+
+}
