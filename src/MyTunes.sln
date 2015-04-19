@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTunes", "MyTunes\MyTunes.csproj", "{58D1ADE0-86F7-40EC-BDDB-C247C9CF6E8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTunes.Dominio", "MyTunes.Dominio\MyTunes.Dominio.csproj", "{C389B530-5679-4174-AD5B-610D1BAA2D54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTunes.Repository", "MyTunes.Repository\MyTunes.Repository.csproj", "{1E7C4C63-035D-41B5-A118-B7A58CBB14FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTunes.Services", "MyTunes.Services\MyTunes.Services.csproj", "{2F17F514-87B6-4EE3-8206-8CD39BB3435F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTunes.Common", "MyTunes.Common\MyTunes.Common.csproj", "{CA779A1E-C0CF-4BA8-9681-BA3DDA6BDA50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTunes.Tests", "MyTunes.Tests\MyTunes.Tests.csproj", "{082F86F2-FFA7-446D-A4D0-653F2ADFC54F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Test|Any CPU = Test|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58D1ADE0-86F7-40EC-BDDB-C247C9CF6E8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58D1ADE0-86F7-40EC-BDDB-C247C9CF6E8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58D1ADE0-86F7-40EC-BDDB-C247C9CF6E8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58D1ADE0-86F7-40EC-BDDB-C247C9CF6E8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58D1ADE0-86F7-40EC-BDDB-C247C9CF6E8F}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{58D1ADE0-86F7-40EC-BDDB-C247C9CF6E8F}.Test|Any CPU.Build.0 = Test|Any CPU
+		{C389B530-5679-4174-AD5B-610D1BAA2D54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C389B530-5679-4174-AD5B-610D1BAA2D54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C389B530-5679-4174-AD5B-610D1BAA2D54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C389B530-5679-4174-AD5B-610D1BAA2D54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C389B530-5679-4174-AD5B-610D1BAA2D54}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{C389B530-5679-4174-AD5B-610D1BAA2D54}.Test|Any CPU.Build.0 = Test|Any CPU
+		{1E7C4C63-035D-41B5-A118-B7A58CBB14FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E7C4C63-035D-41B5-A118-B7A58CBB14FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E7C4C63-035D-41B5-A118-B7A58CBB14FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E7C4C63-035D-41B5-A118-B7A58CBB14FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E7C4C63-035D-41B5-A118-B7A58CBB14FD}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{1E7C4C63-035D-41B5-A118-B7A58CBB14FD}.Test|Any CPU.Build.0 = Test|Any CPU
+		{2F17F514-87B6-4EE3-8206-8CD39BB3435F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F17F514-87B6-4EE3-8206-8CD39BB3435F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F17F514-87B6-4EE3-8206-8CD39BB3435F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F17F514-87B6-4EE3-8206-8CD39BB3435F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F17F514-87B6-4EE3-8206-8CD39BB3435F}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{2F17F514-87B6-4EE3-8206-8CD39BB3435F}.Test|Any CPU.Build.0 = Test|Any CPU
+		{CA779A1E-C0CF-4BA8-9681-BA3DDA6BDA50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA779A1E-C0CF-4BA8-9681-BA3DDA6BDA50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA779A1E-C0CF-4BA8-9681-BA3DDA6BDA50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA779A1E-C0CF-4BA8-9681-BA3DDA6BDA50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA779A1E-C0CF-4BA8-9681-BA3DDA6BDA50}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{CA779A1E-C0CF-4BA8-9681-BA3DDA6BDA50}.Test|Any CPU.Build.0 = Test|Any CPU
+		{082F86F2-FFA7-446D-A4D0-653F2ADFC54F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{082F86F2-FFA7-446D-A4D0-653F2ADFC54F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{082F86F2-FFA7-446D-A4D0-653F2ADFC54F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{082F86F2-FFA7-446D-A4D0-653F2ADFC54F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{082F86F2-FFA7-446D-A4D0-653F2ADFC54F}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{082F86F2-FFA7-446D-A4D0-653F2ADFC54F}.Test|Any CPU.Build.0 = Test|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,38 @@
+﻿@model MyTunes.Common.ViewModels.PlaylistEditViewModel
+
+
+<h2>@Html.DisplayTextFor(model => model.Name) playlist</h2>
+@using (Html.BeginForm("SearchTrack", "PlayList", FormMethod.Get))
+{
+    <div class="form-horizontal">
+        <div class="col-md-offset-8 col-md-10">
+            <button type="submit" class="btn btn-success">
+                <span class="glyphicon glyphicon-search">Add Track</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="form-horizontal">
+
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.CustomerId)
+        @Html.HiddenFor(model => model.Name)
+
+        <div id="TracklistContainer">
+            @{
+    Html.RenderPartial("Shared/_TrackList", @Model.Tracks);
+            }
+        </div>
+
+    </div>
+}
+<hr />
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
