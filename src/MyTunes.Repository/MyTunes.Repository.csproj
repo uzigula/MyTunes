@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ADO\IDatabaseContext.cs" />
+    <Compile Include="ADO\IDbRepository.cs" />
+    <Compile Include="ADO\Parameter.cs" />
+    <Compile Include="ADO\PlaylistDbRepository.cs" />
+    <Compile Include="ADO\OracleDatabaseContext.cs" />
+    <Compile Include="ADO\SQLDatabaseContext.cs" />
     <Compile Include="BaseRepository.cs" />
     <Compile Include="ChinookContext.cs" />
     <Compile Include="CustomerRepository.cs" />

@@ -1,0 +1,82 @@
+{
+  "name": "require-handlebars-plugin",
+  "version": "0.11.0",
+  "author": {
+    "name": "Alex Sexton",
+    "email": "alexsexton@gmail.com"
+  },
+  "description": "A plugin for handlebars in require.js",
+  "repository": {
+    "type": "git",
+    "url": "https://SlexAxton@github.com/SlexAxton/require-handlebars-plugin.git"
+  },
+  "license": "To Use: WTFPL, To Contribute: Dojo CLA",
+  "main": "hbs",
+  "volo": {
+    "type": "directory",
+    "dependencies": {
+      "Handlebars": "https://raw.github.com/SlexAxton/require-handlebars-plugin/master/Handlebars.js"
+    }
+  },
+  "jam": {
+    "name": "hbs",
+    "dependencies": {
+      "Handlebars": null
+    }
+  },
+  "scripts": {
+    "test": "node_modules/karma/bin/karma start --singleRun"
+  },
+  "contributors": [
+    {
+      "name": "Xavier Damman",
+      "email": "xdamman@gmail.com"
+    }
+  ],
+  "devDependencies": {
+    "karma": "~0.12.23",
+    "karma-cajon": "0.0.1",
+    "karma-chai": "~0.1.0",
+    "karma-chrome-launcher": "~0.1.4",
+    "karma-coffee-preprocessor": "~0.2.1",
+    "karma-firefox-launcher": "~0.1.3",
+    "karma-html2js-preprocessor": "~0.1.0",
+    "karma-jasmine": "~0.1.5",
+    "karma-mocha": "~0.1.9",
+    "karma-phantomjs-launcher": "~0.1.4",
+    "karma-requirejs": "~0.2.2",
+    "karma-script-launcher": "~0.1.0",
+    "mocha": "~1.21.4",
+    "requirejs": "~2.1.15"
+  },
+  "gitHead": "6140499e610db2ac18472a6b4f3a192c71c0a507",
+  "bugs": {
+    "url": "https://github.com/SlexAxton/require-handlebars-plugin/issues"
+  },
+  "homepage": "https://github.com/SlexAxton/require-handlebars-plugin",
+  "_id": "require-handlebars-plugin@0.11.0",
+  "_shasum": "9b37a43e385b72862c1462d366af79a3d90ec22e",
+  "_from": "require-handlebars-plugin@",
+  "_npmVersion": "2.1.7",
+  "_nodeVersion": "0.10.33",
+  "_npmUser": {
+    "name": "slexaxton",
+    "email": "alexsexton@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "tuurleyck",
+      "email": "arthur_eyckerman@hotmail.com"
+    },
+    {
+      "name": "slexaxton",
+      "email": "alexsexton@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "9b37a43e385b72862c1462d366af79a3d90ec22e",
+    "tarball": "http://registry.npmjs.org/require-handlebars-plugin/-/require-handlebars-plugin-0.11.0.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/require-handlebars-plugin/-/require-handlebars-plugin-0.11.0.tgz"
+}
