@@ -50,7 +50,6 @@ namespace MyTunes.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create(PlaylistCreateViewModel model)
         {
             if (ModelState.IsValid)

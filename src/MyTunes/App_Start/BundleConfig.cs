@@ -15,6 +15,7 @@ namespace IdentitySample
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                         "~/Scripts/angular.js",
+                        "~/Scripts/toastr.js",
                         "~/App/app.js",
                         "~/App/Controllers/*.js",
                         "~/App/Services/*.js"));
@@ -34,7 +35,8 @@ namespace IdentitySample
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/toastr.css"));
         }
     }
 }
