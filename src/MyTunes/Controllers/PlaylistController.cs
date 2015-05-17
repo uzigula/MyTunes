@@ -21,16 +21,21 @@ namespace MyTunes.Controllers
         // GET: Playlist
         public ActionResult Index()
         {
+            return View();
+        }
+
+        [HttpGet]
+
+        public JsonResult Lista()
+        {
             try
             {
                 var playlists = _playListService.GetPlayLists(User.Identity.Name);
-                ViewBag.Titulo = "My PlayList";
-                return View(playlists);
+                return Json(playlists,JsonRequestBehavior.AllowGet);
             }
             catch (InvalidOperationException ex)
             {
-                ModelState.AddModelError("","Cliente no registrado");
-                return View(new List<PlayListViewModel>());
+                return Json(new List<PlayListViewModel>());
             }
             catch (Exception ex)
             {
