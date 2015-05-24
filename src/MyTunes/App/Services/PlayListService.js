@@ -21,6 +21,20 @@ myTunes.factory('playListService', function ($http, $q) {
                 defered.reject(msg);
             });
             return defered.promise;
+        },
+
+        traeCanciones: function (id) {
+            var defered = $q.defer();
+            //$http.get(url + '/Canciones/' + id, { params: { playListId: id } })
+            $http.get(url + '/Canciones/'+id, { params: { playListId: id } })
+                .success(function (data) {
+                    defered.resolve(data);
+                })
+                .error(function (msg, error) {
+                    defered.reject;
+                });
+            return defered.promise;
+
         }
 
     }

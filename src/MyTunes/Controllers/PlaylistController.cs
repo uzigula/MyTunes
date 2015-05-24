@@ -103,5 +103,12 @@ namespace MyTunes.Controllers
             return Json(new HttpResponseMessage(HttpStatusCode.OK)) ;
         }
 
+        [HttpGet]
+        public JsonResult Canciones(int id)
+        {
+            var tracks = _playListService.Get(id).Tracks;
+
+            return Json(tracks,JsonRequestBehavior.AllowGet);
+        }
     }
 }

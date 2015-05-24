@@ -1,37 +1,34 @@
 ﻿<div ng-controller="playListController">
-    <h2>{{titulo}}</h2>
-    <p>
+    @*<p>
         @Html.ActionLink("Nuevo", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>Nombre</th>
-            <th>Calificación</th>
-            <th></th>
-        </tr>
-        <tr ng-repeat="item in canciones"> 
-            <td>{{item.Nombre}}</td>
-            <td>
-                {{item.Calificacion}}
-            </td>
-            <td>
-                <div class="btn-group">
-                    <button title="Acción" class="btn dropdown-toggle btn-xs" data-toggle="dropdown">
-                        <span><i class="glyphicon glyphicon-cog"></i><span class="caret"></span> </span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li>
-                            @*<a href=@Url.Action("Edit", "Playlist", new { id = item.Id })><i class="glyphicon glyphicon-edit"></i>&nbsp;Editar</a>*@
-                        </li>
-                        <li>
-                            @*<a href=@Url.Action("Detail", "Playlist", new { id = item.Id })><i class="glyphicon glyphicon-pencil"></i>&nbsp;Ver</a>*@
-                        </li>
-                        <li>
-                            @*<a href=@Url.Action("Delete", "Playlist", new { id = item.Id })><i class="glyphicon glyphicon-eye-open"></i>&nbsp;Eliminar</a>*@
-                        </li>
-                    </ul>
-                </div>
-            </td>
-        </tr>
-    </table>
+    </p>*@
+    <p></p>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="list-group">
+                <a href="#" class="list-group-item disabled" style="font-weight:500;font-size:16px">
+                    {{titulo}}<span class="btn glyphicon glyphicon-plus-sign"></span>
+                </a>
+                <a href="#" class="list-group-item" ng-repeat="item in lista" ng-click="mostrarCanciones(item.Id)">
+                    {{item.Nombre}}
+                    <span class="badge">{{item.Calificacion}}</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-sm-8">
+            <div class="list-group">
+                <a href="#" class="list-group-item disabled" style="font-weight:500;font-size:16px">
+                    Canciones
+                </a>
+                <a href="#" class="list-group-item" ng-repeat="item in listaCanciones">
+                    <p>Artist: {{item.AlbumArtistName}}</p>
+                    <p>Album: {{item.AlbumTitle}}</p>
+                    <p>Name: {{item.Name}}</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
 </div>
