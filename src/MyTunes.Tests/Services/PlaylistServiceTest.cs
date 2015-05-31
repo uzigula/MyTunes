@@ -7,6 +7,7 @@ using MyTunes.Repository;
 using MyTunes.Services.Entities;
 using NUnit.Framework;
 using Rhino.Mocks;
+using log4net;
 
 namespace MyTunes.Tests.Services
 {
@@ -20,7 +21,8 @@ namespace MyTunes.Tests.Services
             var playListRepositoryStub = MockRepository.GenerateMock<IRepository<Playlist>>();
             var customerRepositoryStub = MockRepository.GenerateMock<IRepository<Customer>>();
             var tracRepositoryStub = MockRepository.GenerateMock<IRepository<Track>>();
-            var playListService = new PlayListService(playListRepositoryStub, customerRepositoryStub, tracRepositoryStub);
+            var loggetStub = MockRepository.GenerateMock<ILog>();
+            var playListService = new PlayListService(playListRepositoryStub, customerRepositoryStub, tracRepositoryStub, loggetStub);
             customerRepositoryStub.Stub(m => m.Get()).Return(new EnumerableQuery<Customer>(new List<Customer>()));
             var playlists = playListService.GetPlayLists("NonUser");
         }
@@ -31,7 +33,8 @@ namespace MyTunes.Tests.Services
             var playListRepositoryStub = MockRepository.GenerateMock<IRepository<Playlist>>();
             var customerRepositoryStub = MockRepository.GenerateMock<IRepository<Customer>>();
             var tracRepositoryStub = MockRepository.GenerateMock<IRepository<Track>>();
-            var playListService = new PlayListService(playListRepositoryStub, customerRepositoryStub, tracRepositoryStub);
+            var loggetStub = MockRepository.GenerateMock<ILog>();
+            var playListService = new PlayListService(playListRepositoryStub, customerRepositoryStub, tracRepositoryStub,loggetStub);
             customerRepositoryStub.Stub(m => m.Get()).Return(new EnumerableQuery<Customer>(new List<Customer>(){new Customer{Email = "user@example.com",Id =1}}));
             playListRepositoryStub.Stub(m => m.Get()).Return(new EnumerableQuery<Playlist>(new List<Playlist>()));
             var playlists = playListService.GetPlayLists("user@example.com");

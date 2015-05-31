@@ -1,7 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using MyTunes.Filters;
+using System.Web.Mvc;
 
 namespace IdentitySample.Controllers
 {
+    [LogginAction]
     public class HomeController : Controller
     {
         public ActionResult Index()

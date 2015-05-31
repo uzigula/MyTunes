@@ -1,7 +1,9 @@
-﻿<div ng-controller="playListController">
+﻿<div ng-controller="playListController" ng-cloak>
     @*<p>
         @Html.ActionLink("Nuevo", "Create")
     </p>*@
+    <img ng-src="{{gravatarUrl}}" />
+
     <p></p>
     <div class="row">
         <div class="col-sm-4">
@@ -11,7 +13,7 @@
                 </a>
                 <a href="#" class="list-group-item" ng-repeat="item in lista" ng-click="mostrarCanciones(item.Id)">
                     {{item.Nombre}}
-                    <span class="badge">{{item.Calificacion}}</span>
+                    <span ng-class="getSpanStyle(item)">{{item.Calificacion}}</span>
                 </a>
             </div>
         </div>

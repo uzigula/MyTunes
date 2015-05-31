@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using MyTunes.Filters;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -10,6 +11,7 @@ using System.Web.Mvc;
 namespace IdentitySample.Controllers
 {
     [Authorize]
+    [LogginAction]
     public class ManageController : Controller
     {
 

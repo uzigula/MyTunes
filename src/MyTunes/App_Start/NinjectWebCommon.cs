@@ -19,6 +19,7 @@ namespace MyTunes.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using Ninject.Extensions.Conventions;
+    using log4net;
 
     public static class NinjectWebCommon 
     {
@@ -53,6 +54,7 @@ namespace MyTunes.App_Start
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
+                kernel.Bind<ILog>().ToMethod(m=> LogManager.GetLogger(m.Request.Target.Member.ReflectedType.Name));
 
                 kernel.Bind(
                     o => o.FromAssemblyContaining<PlayListRepository>()

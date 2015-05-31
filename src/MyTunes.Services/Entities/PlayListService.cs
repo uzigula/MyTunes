@@ -4,6 +4,8 @@ using System.Linq;
 using MyTunes.Common.ViewModels;
 using MyTunes.Dominio;
 using MyTunes.Repository;
+using log4net;
+using System.Reflection;
 
 namespace MyTunes.Services.Entities
 {
@@ -12,20 +14,31 @@ namespace MyTunes.Services.Entities
         private IRepository<Playlist> _playListRepository;
         private IRepository<Customer> _customerRepository;
         private IRepository<Track> _trackRepository;
+        private ILog _logger;
 
-        public PlayListService(IRepository<Playlist> playListsRepository, IRepository<Customer> customerRepository, IRepository<Track> trackRepository)
+        public PlayListService(IRepository<Playlist> playListsRepository, IRepository<Customer> customerRepository, IRepository<Track> trackRepository, ILog logger)
         {
             this._playListRepository = playListsRepository;
             this._customerRepository = customerRepository;
             this._trackRepository = trackRepository;
+            this._logger = logger;
         }
         public IEnumerable<PlayListViewModel> GetPlayLists(string userName)
         {
+            _logger.InfoFormat("Se ejecuto el Metodo {0}", MethodBase.GetCurrentMethod().Name);
             var customer = _customerRepository.Get().FirstOrDefault(c=>c.Email==userName);
-            if (customer == null) throw new InvalidOperationException(string.Format("Cliente no encontrado {0}", userName));
+            if (customer == null)
+            {
+                var ex = new InvalidOperationException(string.Format("Cliente no encontrado {0}", userName));
+                _logger.Error(ex);
+                throw ex;
+            }
             var playLists = _playListRepository.Get().Where(x=>x.CustomerId==customer.Id).ToList(); // PlayList
             // aqui se tiene que hacer un mapeo del dominio al viewmodel
+            _logger.DebugFormat("Se termino la Ejecucion del Metodo {0}", MethodBase.GetCurrentMethod().Name);
             return playLists.Select(playList => new PlayListViewModel(playList)).ToList();
+
+            
         }
          
         public void Dispose()
@@ -35,6 +48,7 @@ namespace MyTunes.Services.Entities
 
         public void Create(PlaylistCreateViewModel model)
         {
+            _logger.InfoFormat("Se ejecuto el Metodo {0}", MethodBase.GetCurrentMethod().Name);
             var customer = _customerRepository.Get().FirstOrDefault(c => c.Email == model.CustomerUserName);
             if (customer == null) throw new InvalidOperationException(string.Format("Cliente no encontrado {0}", model.CustomerUserName));
             var playList = new Playlist(){Name = model.Nombre,CustomerId = customer.Id};
@@ -43,13 +57,19 @@ namespace MyTunes.Services.Entities
 
         public PlaylistEditViewModel Get(int playlistId)
         {
+            _logger.InfoFormat("Se ejecuto el Metodo {0}", MethodBase.GetCurrentMethod().Name);
             var playList = _playListRepository.Get().FirstOrDefault(x => x.Id == playlistId);
-            if (playList== null) throw new InvalidOperationException("Playlist no encontrado");
+            if (playList == null)
+            {
+                _logger.Error(new InvalidOperationException("Playlist no encontrado"));
+                throw new InvalidOperationException("Playlist no encontrado");
+            }
             return new PlaylistEditViewModel(){ Name = playList.Name, Id = playList.Id, CustomerId=playList.CustomerId, Tracks = playList.Track.Select(track => new TracksListViewModel(track,playList.Id)).ToList() };
         }
 
         public IEnumerable<TracksListViewModel> GetTracksFrom(PlaylistSearchTrackViewModel request)
         {
+            _logger.InfoFormat("Se ejecuto el Metodo {0}", MethodBase.GetCurrentMethod().Name);
             var tracklist = _trackRepository.Get().Where(x=>x.Name.Contains(request.TrackName)).ToList();
             return tracklist.Select(track => new TracksListViewModel(track, request.PlayListId)).ToList();
         }
@@ -58,6 +78,7 @@ namespace MyTunes.Services.Entities
 
         public void AddTrack(int playListId, int trackId)
         {
+            _logger.InfoFormat("Se ejecuto el Metodo {0}", MethodBase.GetCurrentMethod().Name);
             var playList = _playListRepository.Get().FirstOrDefault(x => x.Id == playListId);
             if (playList == null) throw new InvalidOperationException("Playlist no encontrado");
             var track = _trackRepository.Get().FirstOrDefault(x => x.Id==trackId);

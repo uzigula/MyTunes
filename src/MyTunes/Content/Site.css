@@ -40,3 +40,18 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+[class*='-blue']{
+    background-color:#7077fa;
+    color:#fff;
+}
+
+[class*='-blue']:hover,[class*='-blue']:active {
+    background-color:#62a6df;
+    color:#fff;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+

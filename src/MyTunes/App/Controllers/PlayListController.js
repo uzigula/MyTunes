@@ -1,6 +1,6 @@
 ﻿"use strict";
-myTunes.controller('playListController', ['$scope', 'playListService', '$log', 'notificationService'
-    , function ($scope, playListService, $log, notificationService) {
+myTunes.controller('playListController', ['$scope', 'playListService', '$log', 'notificationService', 'gravatarUrlBuilder','$timeout'
+    , function ($scope, playListService, $log, notificationService, gravatarUrlBuilder,$timeout) {
         $scope.titulo = "Mis Listas";
         $scope.lista = [];
         $scope.listaCanciones = [];
@@ -34,4 +34,9 @@ myTunes.controller('playListController', ['$scope', 'playListService', '$log', '
         }, function (errorMsg) {
             notificationService.error(errorMsg);
         });
+
+        $timeout(function () {
+            $scope.gravatarUrl = gravatarUrlBuilder.gravatarUrl('uzigula@gmail.com');
+        }, 1000);
+
     }]);

@@ -12,10 +12,12 @@ using System.Web.Mvc;
 using MyTunes.Services;
 using MyTunes.Services.Entities;
 using MyTunes.Common.ViewModels;
+using MyTunes.Controllers;
 
 namespace IdentitySample.Controllers
 {
     [Authorize]
+    [LoggingAction]
     public class AccountController : Controller
     {
         public AccountController(ApplicationUserManager userManager, 

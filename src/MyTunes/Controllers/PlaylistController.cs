@@ -5,10 +5,12 @@ using System.Net;
 using System.Net.Http;
 using MyTunes.Common.ViewModels;
 using MyTunes.Services.Entities;
+using MyTunes.Filters;
 
 namespace MyTunes.Controllers
 {
     [Authorize]
+    [LogginAction]
     public class PlaylistController : Controller
     {
         private PlayListService _playListService;
@@ -31,6 +33,7 @@ namespace MyTunes.Controllers
             try
             {
                 var playlists = _playListService.GetPlayLists(User.Identity.Name);
+
                 return Json(playlists,JsonRequestBehavior.AllowGet);
             }
             catch (InvalidOperationException ex)
