@@ -66,8 +66,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\app.js" />
+    <Content Include="App\Controllers\LoginController.js" />
     <Content Include="App\Controllers\NavigationController.js" />
     <Content Include="App\Controllers\PlayListController.js" />
+    <Content Include="App\Services\AutheticationService.js" />
+    <Content Include="App\Services\AuthStorage.js" />
     <Content Include="App\Services\GravatarUrlBuilder.js" />
     <Content Include="App\Services\Notificaciones.js" />
     <Content Include="App\Services\PlayListService.js" />

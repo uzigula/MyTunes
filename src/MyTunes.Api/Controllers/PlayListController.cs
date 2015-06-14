@@ -9,10 +9,15 @@ using MyTunes.Services.Entities;
 
 namespace MyTunes.Api.Controllers
 {
+    [RoutePrefix("api/PlayList")]
     public class PlayListController : ApiController
     {
-        public IEnumerable<PlayListViewModel> Get()
+        [Authorize]
+        [Route("")]
+        public IHttpActionResult Get()
         {
+            return Ok();
         }
+
     }
 }
