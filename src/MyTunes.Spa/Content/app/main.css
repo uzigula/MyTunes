@@ -1,0 +1,284 @@
+﻿body {
+    padding-top: 50px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 0px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+}
+
+    .sidebar .sidebar-nav > a {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .sidebar .sidebar-header {
+        padding: 10px;
+        border-bottom: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: #a0a0ff;
+        background-color: #c0c0ff
+    }
+
+.main-body-container {
+    padding: 20px;
+}
+
+.static-footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+/* apple colors */
+[class*='-dark'] {
+	background-color:#02243C;
+    color:#f0f0f0;
+}
+[class*='-light'] {
+	background-color:#f9f9f9;
+    color:#999;
+}
+[class*='-blue'] {
+	background-color:#5195ce;
+    color:#fff;
+}
+[class*='-apple'] {
+	background-color:#005DB3;
+    color:#f8f8f8;
+}
+[class*='-gray'] {
+	background-color:#e6e6e6;
+    color:#666;
+}
+[class*='-green'] {
+	background-color:#5BC236;
+    color:#fff;
+}
+
+[class*='-red'] {
+	background-color:red;
+    color:#fff;
+}
+/* hover and active */
+[class*='-dark']:hover,[class*='-dark']:focus {
+	background-color:#12254d;
+    color:#fff;
+}
+[class*='-light']:hover,[class*='-light']:active {
+	background-color:#eeeeee;
+    color:#fff;
+}
+[class*='-blue']:hover,[class*='-blue']:active {
+	background-color:#62a6df;
+    color:#fff;
+}
+[class*='-apple']:hover,[class*='-apple']:active {
+	background-color:#116ec4;
+    color:#fff;
+}
+[class*='-gray']:hover,[class*='-gray']:active {
+	background-color:#d5d5d5;
+    color:#fff;
+}
+[class*='-green']:hover,[class*='-green']:active {
+	background-color:#6cd347;
+    color:#fff;
+}
+[class*='-red']:hover,[class*='-red']:active {
+	background-color:tomato;
+    color:#fff;
+}
+
+
+.logon
+{
+    background: url('http://3.bp.blogspot.com/_UeKpPmoedmk/THEaL1BIcGI/AAAAAAAAAeY/kFeMjLN8IOQ/s1600/Manhattan+Reflections+Skyline+Wallp+TLG.png') fixed;
+    background-size: cover;
+    padding: 0;
+    margin: 0;
+}
+
+.wrap
+{
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+
+p.form-title
+{
+    font-family: 'Droid' , sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 5%;
+    letter-spacing: 4px;
+}
+
+form
+{
+    width: 250px;
+    margin: 0 auto;
+}
+
+form.login input[type="text"], form.login input[type="password"]
+{
+    width: 100%;
+    margin: 0;
+    padding: 5px 10px;
+    background: 0;
+    border: 0;
+    border-bottom: 1px solid #FFFFFF;
+    outline: 0;
+    font-style: italic;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    color: #FFFFFF;
+    outline: 0;
+}
+
+form.login input[type="submit"]
+{
+    width: 100%;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 16px;
+    outline: 0;
+    cursor: pointer;
+    padding: 0px;
+    letter-spacing: 1px;
+}
+
+form.login input[type="submit"]:hover
+{
+    transition: background-color 0.5s ease;
+}
+
+form.login .remember-forgot
+{
+    float: left;
+    width: 100%;
+    margin: 10px 0 0 0;
+}
+form.login .forgot-pass-content
+{
+    min-height: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+form.login label, form.login a
+{
+    font-size: 12px;
+    font-weight: 400;
+    color: #FFFFFF;
+}
+
+form.login a
+{
+    transition: color 0.5s ease;
+}
+
+form.login a:hover
+{
+    color: #2ecc71;
+}
+
+.pr-wrap
+{
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: none;
+}
+
+.show-pass-reset
+{
+    display: block !important;
+}
+
+.pass-reset
+{
+    margin: 0 auto;
+    width: 250px;
+    position: relative;
+    margin-top: 22%;
+    z-index: 999;
+    background: #FFFFFF;
+    padding: 20px 15px;
+}
+
+.pass-reset label
+{
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.pass-reset input[type="email"]
+{
+    width: 100%;
+    margin: 5px 0 0 0;
+    padding: 5px 10px;
+    background: 0;
+    border: 0;
+    border-bottom: 1px solid #000000;
+    outline: 0;
+    font-style: italic;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    color: #000000;
+    outline: 0;
+}
+
+.pass-reset input[type="submit"]
+{
+    width: 100%;
+    border: 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 10px;
+    outline: 0;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+.pass-reset input[type="submit"]:hover
+{
+    transition: background-color 0.5s ease;
+}
+.posted-by
+{
+    position: absolute;
+    bottom: 26px;
+    margin: 0 auto;
+    color: #FFF;
+    background-color: rgba(0, 0, 0, 0.66);
+    padding: 10px;
+    left: 45%;
+}

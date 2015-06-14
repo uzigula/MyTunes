@@ -1,0 +1,30 @@
+﻿<div ng-cloak>
+    <img ng-src="{{gravatarUrl}}" />
+    <p></p>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="list-group">
+                <a href="#" class="list-group-item disabled" style="font-weight:500;font-size:16px">
+                    {{titulo}}<span class="btn glyphicon glyphicon-plus-sign"></span>
+                </a>
+                <a href="#" class="list-group-item" ng-repeat="item in lista" ng-click="mostrarCanciones(item.Id)">
+                    {{item.Nombre}}
+                    <span ng-class="getSpanStyle(item)">{{item.Calificacion}}</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-sm-8">
+            <div class="list-group">
+                <a href="#" class="list-group-item disabled" style="font-weight:500;font-size:16px">
+                    Canciones
+                </a>
+                <a href="#" class="list-group-item" ng-repeat="item in listaCanciones">
+                    <p>Artist: {{item.AlbumArtistName}}</p>
+                    <p>Album: {{item.AlbumTitle}}</p>
+                    <p>Name: {{item.Name}}</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
