@@ -23,7 +23,7 @@ namespace MyTunes.Api.Controllers
         [AllowAnonymous]
         [HttpPost]
         [Route("Register")]
-        public async Task<IHttpActionResult> Register(UserModel userModel)
+        public async Task<IHttpActionResult> Register(UserViewModel userModel)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 

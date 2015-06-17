@@ -1,0 +1,30 @@
+﻿<div ng-controller="loginController">
+    <section>
+        <div id="login-form" class="login-image">
+            <form name="loginForm" class="form-inline login" novalidate>
+                <fieldset>
+                    <!--<span class="error" ng-show="hasErrors">@L("Login_InvalidCredentials")</span>-->
+                    <div class="form-group">
+                        <label class="col-lg-4 pull-left">Name</label>
+                        <div class="input-group col-lg-8 pull-right">
+                            <input class="form-control" ng-enter="login()" type="text" name="UserName" autofocus="" required validated ng-model="userName" placeholder="UserName" id="UserName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 pull-left" for="exampleInputPassword2">Password</label>
+                        <div class="input-group col-lg-8 pull-right">
+                            <input type="password" ng-enter="login()" class="form-control" required validated ng-model="password" name="Password" placeholder="Password" id="Password">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-lg-offset-4">
+                        <button type="button" ng-click="login()" class="btn btn-info" ng-disabled="loginForm.$invalid">
+                            <span class="glyphicon glyphicon-off btn-icon"></span>Sign In
+                            <!--@L("SignIn")-->
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </section>
+</div>
+
