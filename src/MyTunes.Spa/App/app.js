@@ -7,7 +7,7 @@ toastr.options.positionClass = "toast-bottom-right";
 
 
 myTunes.config([
-    '$stateProvider', '$urlRouterProvider', '$httpProvider', 
+    '$stateProvider', '$urlRouterProvider', '$httpProvider',
 function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
     /////////////////////////////
@@ -92,18 +92,22 @@ myTunes.run([
         $rootScope.$stateParams = $stateParams;
 
         $rootScope.appName = 'MyTunes';
-        //$rootScope.$on('$stateChangeStart',
-        //    function (event, toState, toParams, fromState, fromParams) {
-        //        if (!authStorage.isAuthenticated()) { //no esta autenticado
-        //            event.preventDefault();
-        //            $state.go('login');
-
-        //        } else {
-        //            event.preventDefault();
-        //            var authData = authStorage.getToken();
-        //            $rootScope.currentUser = authData.userName;
-        //            $state.go('home');
-        //        }
-        //    });
+        $rootScope.$on('$stateChangeStart',
+            function (event, toState, toParams, fromState, fromParams) {
+                if (!authStorage.isAuthenticated()) { //no esta autenticado
+                    if (toState.name != 'login') {
+                        event.preventDefault();
+                        $state.go('login');
+                    }
+                } else
+                    if ((toState.name === 'login')) {
+                        event.preventDefault();
+                        $state.go('home');
+                    }
+                    else {
+                        var authData = authStorage.getToken();
+                        $rootScope.currentUser = authData.userName;
+                    }
+            });
     }
 ]);

@@ -17,6 +17,7 @@ myTunes.service('oAuthInterceptor', function ($q, $rootScope, authStorage) {
 
     var _responseError = function (rejection) {
         if (rejection.status === 401) {
+            authStorage.deleteToken();
             $rootScope.$state.go('login');
         }
         return $q.reject(rejection);
