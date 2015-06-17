@@ -73,6 +73,7 @@
     <Content Include="App\Services\AuthStorage.js" />
     <Content Include="App\Services\GravatarUrlBuilder.js" />
     <Content Include="App\Services\Notificaciones.js" />
+    <Content Include="App\Services\oauthInterceptor.js" />
     <Content Include="App\Services\PlayListService.js" />
     <Content Include="Content\app\img\background.png" />
     <Content Include="Content\app\main.css" />

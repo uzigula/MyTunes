@@ -7,8 +7,8 @@ toastr.options.positionClass = "toast-bottom-right";
 
 
 myTunes.config([
-    '$stateProvider', '$urlRouterProvider',
-function ($stateProvider, $urlRouterProvider) {
+    '$stateProvider', '$urlRouterProvider', '$httpProvider', 
+function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
     /////////////////////////////
     // Redirects and Otherwise //
@@ -47,6 +47,8 @@ function ($stateProvider, $urlRouterProvider) {
             url: "/home",
             templateUrl: '/Views/home.html'
         });
+
+    $httpProvider.interceptors.push('oAuthInterceptor');
 }
 ]);
 
