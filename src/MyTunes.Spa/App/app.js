@@ -7,8 +7,8 @@ toastr.options.positionClass = "toast-bottom-right";
 
 
 myTunes.config([
-    '$stateProvider', '$urlRouterProvider', 'authStorage',
-function ($stateProvider, $urlRouterProvider, authStorage) {
+    '$stateProvider', '$urlRouterProvider',
+function ($stateProvider, $urlRouterProvider) {
 
     /////////////////////////////
     // Redirects and Otherwise //
