@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@section scripts
+{
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script type="text/javascript" src="~/signalr/hubs"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            toastr.options.positionClass = "toast-bottom-right";
+            var chat = $.connection.chatHub;
+            $("#nombre").val(prompt("Como te llamas", "Chatroom"));
+            $("#grupo").val(prompt("a que chat quieres entrar", "Chatroom"));
+            $("#messageBox").focus();
+
+            $.connection.hub.start()
+                .done(function () {
+                    var name = $("#nombre").val();
+                    var grupo = $("#grupo").val();
+                    chat.server.entrarA(grupo);
+                    chat.server.entrar(name);
+                    $("#chatWindow").val("conectado:"+ "\n");
+                    $("#sendMessage").on('click', function(){
+                        var msg = $("#messageBox").val();
+                        var name = $("#nombre").val();
+                        var grupo = $("#grupo").val();
+                        chat.server.send(name, msg, grupo);
+                        $("#messageBox").val("");
+                    });
+                    $("#sendDirectMessage").on('click', function () {
+                        var msg = $("#messageBox").val();
+                        var name = $("#nombre").val();
+                        var grupo = $("#grupo").val();
+                        var otrousuario = $("#otrousuario").val();
+                        chat.server.mensajePara(otrousuario, name, msg);
+                        $("#messageBox").val("");
+                    });
+                });
+            chat.client.showMessage = function (mensaje) {
+                toastr.info(mensaje.Contenido, "mensaje de " + mensaje.Autor);
+                $("#chatWindow").val($("#chatWindow").val() + mensaje.Autor + ' dice ' + mensaje.Contenido + '\n');
+            };
+        });
+    </script>
+}
+
+<div>
+    @Html.Hidden("nombre")
+    @Html.Hidden("grupo")
+    @Html.TextArea("chatWindow", new {@style="width :400px; height: 400px "})
+
+    <div>
+        @Html.Label("Mensaje")
+        @Html.TextBox("messageBox")
+        @Html.Label("Otro Usuario")
+        @Html.TextBox("otrousuario")
+        <button id="sendMessage">Publicar</button>
+        <button id="sendDirectMessage">Directo</button>
+    </div>
+</div>

@@ -15,8 +15,8 @@ namespace IdentitySample
         {
             // Configure the db context, user manager and role manager to use a single instance per request
             app.CreatePerOwinContext(ApplicationDbContext.Create);
-            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
-            app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
+            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.CreateSelf);
+            app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.CreateSelf);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
             // Enable the application to use a cookie to store information for the signed in user
@@ -58,9 +58,9 @@ namespace IdentitySample
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            app.UseGoogleAuthentication(
+                clientId: "936836003178-kcvogm7o5qgmdhk0uhcr1m8jle13iv70.apps.googleusercontent.com",
+                clientSecret: "CJ9zXeUemv3OBONCE5RlIvxH");
         }
     }
 }
