@@ -1,11 +1,11 @@
 ﻿"use strict";
 myTunes.factory('playListService', function ($http, $q) {
-    var url = "http://localhost:51342/PlayList";
+    var url = "http://localhost:52762/api/Playlist";
     return {
         traerLista: function () {
             var defered = $q.defer(); // una promesa
             // una llamada ajax Get
-            $http.get(url+'/Lista').success(function (data) {
+            $http.get(url).success(function (data) {
                 defered.resolve(data);
             }).error(function (msg, error) {
                 defered.reject(msg);

@@ -16,7 +16,7 @@ myTunes.factory('authenticacionService',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             };
             $http.post(urlbase + "/token", data, miHeader)
-                .sucess(function (response) {
+                .success(function (response) {
                     var token = {
                         token: response.access_token,
                         tokenType: response.token_type,
@@ -26,8 +26,9 @@ myTunes.factory('authenticacionService',
                     defered.resolve(response);
                 }).error(function (err, status) {
                     authStorage.deleteToken();
-                    defered.reject(err)
+                defered.reject(err);
                 });
+            return defered.promise;
         };
         return authService;
     }

@@ -1,15 +1,15 @@
-﻿using Microsoft.Owin;
-using Microsoft.Owin.Security.OAuth;
-using Owin;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web.Http;
+using Microsoft.Owin;
+using Microsoft.Owin.Security.OAuth;
 using MyTunes.Api.ServerProviders;
-using Microsoft.Owin.Cors;
+using Newtonsoft.Json.Serialization;
+using Owin;
 
-[assembly: OwinStartup(typeof(MyTunes.Api.Startup))]
 namespace MyTunes.Api
 {
     public class Startup
@@ -19,15 +19,15 @@ namespace MyTunes.Api
             ConfigureOAuth(app);
             HttpConfiguration config = new HttpConfiguration();
             WebApiConfig.Register(config);
-            app.UseCors(CorsOptions.AllowAll);
+            var json = config.Formatters.JsonFormatter;
+            json.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseWebApi(config);
-
         }
-
 
         public void ConfigureOAuth(IAppBuilder app)
         {
-            var oAuthServerOptions = new OAuthAuthorizationServerOptions()
+            OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
             {
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/token"),
@@ -35,7 +35,8 @@ namespace MyTunes.Api
                 Provider = new PropietaryAuthorizationServerProvider()
             };
 
-            app.UseOAuthAuthorizationServer(oAuthServerOptions);
+            // Token Generation
+            app.UseOAuthAuthorizationServer(OAuthServerOptions);
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
 
         }

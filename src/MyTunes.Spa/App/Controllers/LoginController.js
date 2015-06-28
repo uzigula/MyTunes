@@ -1,7 +1,7 @@
 ﻿'use strict';
 myTunes.controller('loginController',
-    ['$scope', '$window', 'authenticacionService',
-        function ($scope, $window, authenticacionService) {
+    ['$scope', 'authenticacionService',
+        function ($scope, authenticacionService) {
             $scope.userName = "";
             $scope.password = "";
 
@@ -13,7 +13,7 @@ myTunes.controller('loginController',
                 authenticacionService.login(userModel).then(
                     function (response) {
                         $scope.currentUser = userModel.userName;
-                        $window.location.href = '/';
+                        $scope.$state.go('home');
                     }, function (err) {
                         alert(err.error.description);
                     });
